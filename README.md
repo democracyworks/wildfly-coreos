@@ -5,6 +5,7 @@
 ## Usage
 
 `fleetctl submit wildfly@.service`
+
 `fleetctl start wildfly@1` for each instance you'd like to start
 
 ## Building
