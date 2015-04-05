@@ -6,7 +6,7 @@
 
 `fleetctl submit wildfly@.service`
 
-`fleetctl start wildfly@1` for each instance you'd like to start
+`fleetctl start wildfly@1` incrementing the number after `@` for each instance you'd like to start
 
 ## Building
 
