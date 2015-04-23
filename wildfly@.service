@@ -21,7 +21,7 @@ ExecStartPre=/usr/bin/docker pull ${DOCKER_REPO}:${VERSION}
 ExecStart=/bin/bash -c 'docker run -P --name ${CONTAINER} --restart=always \
   --env ADMIN_USERNAME=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-username?raw) \
   --env ADMIN_PASSWORD=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-password?raw) \
-  --env JAVA_OPTS="-Xms64m -Xmx4096m -XX:MaxPermSize=4096m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true" \
+  --env JAVA_OPTS="-Xms64m -Xmx8192m -XX:MaxPermSize=2048m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true" \
   ${DOCKER_REPO}:${VERSION}'
 
 ExecStop=/usr/bin/docker stop ${CONTAINER}
