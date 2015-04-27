@@ -6,3 +6,4 @@ COPY ./start /bin/start
 ADD standalone-rsyslog.xml /opt/jboss/wildfly/standalone/configuration/standalone-rsyslog.xml
 
 ENTRYPOINT ["/bin/start"]
+CMD []
