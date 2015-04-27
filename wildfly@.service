@@ -19,10 +19,10 @@ ExecStartPre=-/usr/bin/docker rm ${CONTAINER}
 ExecStartPre=/usr/bin/docker pull ${DOCKER_REPO}:${VERSION}
 
 ExecStart=/bin/bash -c 'docker run -P --name ${CONTAINER} --restart=always \
+  --hostname=${COREOS_PRIVATE_IPV4} \
   --link papertrail:papertrail \
   --env ADMIN_USERNAME=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-username?raw) \
   --env ADMIN_PASSWORD=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-password?raw) \
-  --env HOST_IP=${COREOS_PRIVATE_IPV4} \
   ${DOCKER_REPO}:${VERSION}'
 
 ExecStop=/usr/bin/docker stop ${CONTAINER}
