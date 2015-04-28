@@ -8,5 +8,7 @@ RUN sed -i '/pojo/d' /opt/jboss/wildfly/standalone/configuration/standalone.xml
 
 COPY ./start /bin/start
 
+ADD standalone-rsyslog.xml /opt/jboss/wildfly/standalone/configuration/standalone-rsyslog.xml
+
 ENTRYPOINT ["/bin/start"]
-CMD ["-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+CMD []
