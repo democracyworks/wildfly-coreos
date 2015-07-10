@@ -1,14 +1,17 @@
 FROM jboss/wildfly:8.2.0.Final
 MAINTAINER Democracy Works, Inc. <dev@democracy.works>
 
-# work around bug where >1 app causes errors like:
-# org.jboss.msc.service.DuplicateServiceException: Service jboss.pojo.\"org.jboss.netty.internal.LoggerConfigurator\".DESCRIBED is already registered"
-RUN sed -i '/pojo/d' /opt/jboss/wildfly/standalone/configuration/standalone.xml
+WORKDIR /opt/jboss/wildfly
 
+USER root
+RUN mkdir -p /var/log/remote/wildfly && \
+    ln -s /var/log/remote/wildfly standalone/log && \
+    chown -R jboss /var/log/remote/wildfly
+USER jboss
+VOLUME ["/var/log/remote/wildfly"]
 
-COPY ./start /bin/start
-
-ADD standalone-rsyslog.xml /opt/jboss/wildfly/standalone/configuration/standalone-rsyslog.xml
+COPY standalone.xml standalone/configuration/
+COPY start /bin/start
 
 ENTRYPOINT ["/bin/start"]
 CMD []
