@@ -1,0 +1,10 @@
+app:
+  build: .
+  environment:
+    ADMIN_USERNAME: admin
+    ADMIN_PASSWORD: admin
+log:
+  build: ../log-works
+  volumes_from:
+    - app
+  command: --dest-host=logs3.papertrailapp.com --dest-port=41302 '/var/log/remote/**/*'
