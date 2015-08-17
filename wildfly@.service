@@ -11,7 +11,7 @@ TimeoutStartSec=10m
 TimeoutStopSec=10m
 
 Environment=DOCKER_REPO=quay.io/democracyworks/wildfly
-Environment=VERSION=8.2.0.Final
+Environment=VERSION=master-a6516ee
 Environment=CONTAINER=wildfly
 
 ExecStartPre=-/usr/bin/docker kill ${CONTAINER}
@@ -20,7 +20,6 @@ ExecStartPre=/usr/bin/docker pull ${DOCKER_REPO}:${VERSION}
 
 ExecStart=/bin/bash -c 'docker run -P --name ${CONTAINER} --restart=always \
   --hostname %H \
-  --link papertrail:papertrail \
   --env ADMIN_USERNAME=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-username?raw) \
   --env ADMIN_PASSWORD=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-password?raw) \
   --env JAVA_OPTS="-Xms64m -Xmx8192m -XX:MaxPermSize=2048m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true" \
