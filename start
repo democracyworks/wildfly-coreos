@@ -5,6 +5,8 @@ if [[ -z $ADMIN_USERNAME || -z $ADMIN_PASSWORD ]]; then
   exit 1
 fi
 
+touch /opt/jboss/wildfly/standalone/log/wildfly.log
+
 /opt/jboss/wildfly/bin/add-user.sh $ADMIN_USERNAME $ADMIN_PASSWORD --silent
 
-/opt/jboss/wildfly/bin/standalone.sh -c standalone-rsyslog.xml -Djboss.host.name=$HOSTNAME -b 0.0.0.0 -bmanagement 0.0.0.0 $@
+/opt/jboss/wildfly/bin/standalone.sh -Djboss.host.name=$HOSTNAME -b 0.0.0.0 -bmanagement 0.0.0.0 $@
