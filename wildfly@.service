@@ -11,7 +11,7 @@ TimeoutStartSec=10m
 TimeoutStopSec=10m
 
 Environment=DOCKER_REPO=quay.io/democracyworks/wildfly
-Environment=VERSION=master-a6516ee
+Environment=VERSION=8.2.1.Final
 Environment=CONTAINER=wildfly
 
 ExecStartPre=-/usr/bin/docker kill ${CONTAINER}
