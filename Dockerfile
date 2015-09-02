@@ -1,4 +1,4 @@
-FROM jboss/wildfly:8.2.0.Final
+FROM jboss/wildfly:8.2.1.Final
 MAINTAINER Democracy Works, Inc. <dev@democracy.works>
 
 WORKDIR /opt/jboss/wildfly
