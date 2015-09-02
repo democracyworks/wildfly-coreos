@@ -7,11 +7,15 @@ USER root
 RUN mkdir -p /var/log/remote/wildfly && \
     ln -s /var/log/remote/wildfly standalone/log && \
     chown -R jboss /var/log/remote/wildfly
-USER jboss
 VOLUME ["/var/log/remote/wildfly"]
 
 COPY standalone.xml standalone/configuration/
+RUN chown -R jboss standalone/configuration
 COPY start /bin/start
+RUN chown jboss /bin/start && chmod +x /bin/start
+USER jboss
+
+EXPOSE 9990
 
 ENTRYPOINT ["/bin/start"]
 CMD []
