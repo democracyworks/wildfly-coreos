@@ -13,6 +13,11 @@ COPY standalone.xml standalone/configuration/
 RUN chown -R jboss standalone/configuration
 COPY start /bin/start
 RUN chown jboss /bin/start && chmod +x /bin/start
+
+# Re-enable SSLv3 for now because CA OVR API requires it.
+# TODO: Undo this as soon as they fix that. SSLv3 is insecure.
+RUN sed -ie 's/SSLv3, //' /usr/lib/jvm/java/jre/lib/security/java.security
+
 USER jboss
 
 EXPOSE 9990
