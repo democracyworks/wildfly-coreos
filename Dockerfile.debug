@@ -1,0 +1,7 @@
+FROM quay.io/democracyworks/wildfly:8.2.1.Final
+MAINTAINER Democracy Works, Inc. <dev@democracy.works>
+
+USER root
+COPY standalone-debug.xml standalone/configuration/standalone.xml
+RUN chown -R jboss standalone/configuration
+USER jboss
