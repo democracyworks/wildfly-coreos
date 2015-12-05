@@ -4,6 +4,10 @@ MAINTAINER Democracy Works, Inc. <dev@democracy.works>
 WORKDIR /opt/jboss/wildfly
 
 USER root
+
+COPY newrelic /opt/jboss/wildfly/newrelic
+RUN mkdir /opt/jboss/wildfly/newrelic/logs && chown -R jboss /opt/jboss/wildfly/newrelic/logs
+
 RUN mkdir -p /var/log/remote/wildfly && \
     ln -s /var/log/remote/wildfly standalone/log && \
     chown -R jboss /var/log/remote/wildfly
