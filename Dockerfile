@@ -1,6 +1,10 @@
 FROM jboss/wildfly:8.2.1.Final
 MAINTAINER Democracy Works, Inc. <dev@democracy.works>
 
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+
 WORKDIR /opt/jboss/wildfly
 
 USER root
