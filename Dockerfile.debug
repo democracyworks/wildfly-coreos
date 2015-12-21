@@ -1,4 +1,4 @@
-FROM quay.io/democracyworks/wildfly:8.2.1.Final
+FROM quay.io/democracyworks/wildfly:9.0.2.Final
 MAINTAINER Democracy Works, Inc. <dev@democracy.works>
 
 USER root
