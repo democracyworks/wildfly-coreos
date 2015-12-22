@@ -22,7 +22,7 @@ ExecStart=/bin/bash -c 'docker run -P --name ${CONTAINER} --restart=always \
   --hostname %H \
   --env ADMIN_USERNAME=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-username?raw) \
   --env ADMIN_PASSWORD=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-password?raw) \
-  --env JAVA_OPTS="-Xms64m -Xmx12g -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -javaagent:/opt/jboss/wildfly/newrelic/newrelic.jar" \
+  --env JAVA_OPTS="-Xms64m -Xmx12g -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true" \
   ${DOCKER_REPO}:${VERSION}'
 
 ExecStop=/usr/bin/docker stop ${CONTAINER}
