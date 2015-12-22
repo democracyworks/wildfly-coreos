@@ -31,4 +31,4 @@ If you want NewRelic built in...
 
 ## Docker Repo
 
-This image lives at `quay.io/democracyworks/wildfly-coreos`
+This image lives at `quay.io/democracyworks/wildfly`
