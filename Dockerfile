@@ -1,4 +1,4 @@
-FROM jboss/wildfly:8.2.1.Final
+FROM jboss/wildfly:9.0.2.Final
 MAINTAINER Democracy Works, Inc. <dev@democracy.works>
 
 ENV LC_ALL en_US.UTF-8
@@ -8,6 +8,7 @@ ENV LANGUAGE en_US.UTF-8
 WORKDIR /opt/jboss/wildfly
 
 USER root
+
 RUN mkdir -p /var/log/remote/wildfly && \
     ln -s /var/log/remote/wildfly standalone/log && \
     chown -R jboss /var/log/remote/wildfly
