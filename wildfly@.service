@@ -11,7 +11,7 @@ TimeoutStartSec=10m
 TimeoutStopSec=10m
 
 Environment=DOCKER_REPO=quay.io/democracyworks/wildfly
-Environment=VERSION=8.2.1.Final-newrelic
+Environment=VERSION=9.0.2.Final-newrelic
 Environment=CONTAINER=wildfly
 
 ExecStartPre=-/usr/bin/docker kill ${CONTAINER}
