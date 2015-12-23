@@ -11,7 +11,7 @@ TimeoutStartSec=10m
 TimeoutStopSec=10m
 
 Environment=DOCKER_REPO=quay.io/democracyworks/wildfly
-Environment=VERSION=8.2.1.Final
+Environment=VERSION=8.2.1.Final-newrelic
 Environment=CONTAINER=wildfly
 
 ExecStartPre=-/usr/bin/docker kill ${CONTAINER}
@@ -22,7 +22,7 @@ ExecStart=/bin/bash -c 'docker run -P --name ${CONTAINER} --restart=always \
   --hostname %H \
   --env ADMIN_USERNAME=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-username?raw) \
   --env ADMIN_PASSWORD=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-password?raw) \
-  --env JAVA_OPTS="-Xms64m -Xmx8192m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true" \
+  --env JAVA_OPTS="-Xms64m -Xmx12g -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true" \
   ${DOCKER_REPO}:${VERSION}'
 
 ExecStop=/usr/bin/docker stop ${CONTAINER}

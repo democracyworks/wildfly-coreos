@@ -1,0 +1,7 @@
+FROM quay.io/democracyworks/wildfly:8.2.1.Final-debug
+MAINTAINER Democracy Works, Inc. <dev@democracy.works>
+
+USER root
+COPY newrelic /opt/jboss/wildfly/newrelic
+RUN mkdir /opt/jboss/wildfly/newrelic/logs && chown -R jboss /opt/jboss/wildfly/newrelic/logs
+USER jboss

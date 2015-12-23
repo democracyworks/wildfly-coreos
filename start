@@ -9,4 +9,8 @@ touch /opt/jboss/wildfly/standalone/log/wildfly.log
 
 /opt/jboss/wildfly/bin/add-user.sh $ADMIN_USERNAME $ADMIN_PASSWORD --silent
 
-/opt/jboss/wildfly/bin/standalone.sh -Djboss.host.name=$HOSTNAME -b 0.0.0.0 -bmanagement 0.0.0.0 $@
+if [[ -e /opt/jboss/wildfly/newrelic/newrelic.jar ]]; then
+  export JAVA_OPTS="$JAVA_OPTS -javaagent:/opt/jboss/wildfly/newrelic/newrelic.jar"
+fi
+
+/opt/jboss/wildfly/bin/standalone.sh -Djboss.host.name=$HOSTNAME -b 0.0.0.0 -bmanagement 0.0.0.0 $NEWRELIC_ARG $@
