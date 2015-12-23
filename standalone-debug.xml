@@ -117,6 +117,12 @@
       <logger category="datomic">
         <level name="WARN"/>
       </logger>
+      <logger category="org.jboss.ejb.client.txn">
+        <level name="WARN"/>
+      </logger>
+      <logger category="org.hornetq.core.client">
+        <level name="WARN"/>
+      </logger>
       <root-logger>
         <level name="DEBUG"/>
         <handlers>
