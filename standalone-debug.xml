@@ -108,6 +108,15 @@
       <logger category="jacorb.config">
         <level name="ERROR"/>
       </logger>
+      <logger category="org.apache.http">
+        <level name="WARN"/>
+      </logger>
+      <logger category="com.amazonaws">
+        <level name="WARN"/>
+      </logger>
+      <logger category="datomic">
+        <level name="WARN"/>
+      </logger>
       <root-logger>
         <level name="DEBUG"/>
         <handlers>
