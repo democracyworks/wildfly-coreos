@@ -126,6 +126,9 @@
       <logger category="org.apache.pdfbox">
         <level name="WARN"/>
       </logger>
+      <logger category="javax.enterprise">
+        <level name="INFO"/>
+      </logger>
       <root-logger>
         <level name="DEBUG"/>
         <handlers>
