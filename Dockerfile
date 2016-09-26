@@ -7,6 +7,8 @@ ENV LANGUAGE en_US.UTF-8
 
 WORKDIR /opt/jboss/wildfly
 
+USER root
+
 RUN mkdir -p /var/log/remote/wildfly && \
     ln -s /var/log/remote/wildfly standalone/log && \
     chown -R jboss /var/log/remote/wildfly
