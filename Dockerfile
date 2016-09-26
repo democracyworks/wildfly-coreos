@@ -5,14 +5,6 @@ ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
-WORKDIR /opt/yourkit
-
-USER root
-
-RUN yum -y install bzip2
-RUN curl -L -O https://www.yourkit.com/download/yjp-2016.02-b42-linux.tar.bz2
-RUN tar -jxf yjp-2016.02-b42-linux.tar.bz2
-
 WORKDIR /opt/jboss/wildfly
 
 RUN mkdir -p /var/log/remote/wildfly && \
