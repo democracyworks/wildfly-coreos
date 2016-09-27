@@ -11,3 +11,5 @@ RUN tar -jxf yjp-2016.02-b42-linux.tar.bz2
 
 WORKDIR /opt/jboss/wildfly
 USER jboss
+
+EXPOSE 10001

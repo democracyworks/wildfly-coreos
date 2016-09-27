@@ -25,7 +25,7 @@ RUN sed -ie 's/SSLv3, //' /usr/lib/jvm/java/jre/lib/security/java.security
 
 USER jboss
 
-EXPOSE 9990 10001
+EXPOSE 9990
 
 ENTRYPOINT ["/bin/start"]
 CMD []
