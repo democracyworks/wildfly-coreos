@@ -23,9 +23,9 @@ ExecStart=/bin/bash -c 'docker run -P -p 9990:9990 --name ${CONTAINER} \
   --hostname %H \
   --env ADMIN_USERNAME=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-username?raw) \
   --env ADMIN_PASSWORD=$(curl -s http://${COREOS_PRIVATE_IPV4}:8500/v1/kv/wildfly/admin-password?raw) \
-  --env JAVA_OPTS="-Xms10g -Xmx20g -Djava.net.preferIPv4Stack=true \
+  --env JAVA_OPTS="-Xms75g -Xmx150g -Djava.net.preferIPv4Stack=true \
   -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true \
-  -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled" \
+  -XX:+UseG1GC" \
   ${DOCKER_REPO}:${VERSION}'
 
 ExecStop=/usr/bin/docker stop ${CONTAINER}
