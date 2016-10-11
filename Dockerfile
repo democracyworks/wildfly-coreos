@@ -9,6 +9,8 @@ WORKDIR /opt/jboss/wildfly
 
 USER root
 
+RUN yum update -y
+
 RUN mkdir -p /var/log/remote/wildfly && \
     ln -s /var/log/remote/wildfly standalone/log && \
     chown -R jboss /var/log/remote/wildfly
